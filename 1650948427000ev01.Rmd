@@ -1,0 +1,254 @@
+---
+title: "Evidencia 1 | Análisis Inicial"
+author: "Karina Ruiz Tron"
+date: '2022-04-25'
+output: html_document
+---
+## Primer avance
+
+### Parte 1
+**1.	Investiga, ¿Cuál es la situación actual de COVID-19 a nivel mundial, en México, en tu estado de origen y en tu municipio, alcaldía o colonia?** 
+Nivel mundial: de acuerdo a los datos recopilados por la página statista, a nivel mundial hay alrededor de 492,094,044 casos confirmados de COVID-19 al día 17 de abril del 2022.
+En México: de acuerdo a los datos recopilados por la página statista, en México hay 5,731,635 casos confirmados de COVID-19 al día 22 de abril del 2022.
+Ciudad de México: de acuerdo a los datos recopilados por la página Johns Hopkins, en la ciudad del México se han detectado 11,658 casos de coronavirus en los últimos 28 días.
+En mi alcaldía (Coyoacán): de acuerdo a los datos recopilados por la página del gobierno de México dedicada al COVID-19, en la alcaldía de Coyoacán hay 77,222 casos confirmados al día 14 de abril del 2022.
+
+**2.	¿Cuál fue la primera variante del virus que se propagó a todo el mundo?**
+La beta fue descubierta primero (Mayo 2020), sin embargo, la variante alfa (Septiembre 2020) fue la que se esparció a nivel mundial más rápido, fue declarada como una variante preocupante o de interés el 18 de diciembre junto con la beta.
+
+**3.	¿Cuáles son las otras variantes del virus que existen en otras regiones del mundo?**
+Las variantes Delta y Omicron se encuentran actualmente activas alrededor del mundo.
+
+**4.	¿Cómo buscarías información de la variante del virus en tu país? **
+Buscaría información en la página del gobierno de mi país (Gobierno de México) debido a que emiten informes semanales de variantes COVID-19. Además ingresaría a la página de la Organización Mundial de la Salud (OMS) para poder aprender sobre la variante en general.
+
+**5.	Imagina que te encuentras en una situación similar a la de Li Wenliang, médico chino que intentó alertar sobre el brote de coronavirus en su país, pero fue detenido por las autoridades y obligado a retractarse, ¿qué harías en su caso? Selecciona un inciso:a) Lo reportas al centro de investigación o la universidad. b) Lo reportas a la prensa. c) Guardas la información.**
+Yo escogería reportarlo a la prensa para evitar que este virus pudiera extenderse y concientizar a las personas sobre los riesgos de contraer esta enfermedad. Sin embargo, viviría con el constante miedo de que las autoridades pudieran hacerle algo a mi familia por no haberlos obedecido.
+
+
+### Parte 2
+
+*Variante Alpha*
+```{r}
+#install.packages("seqinr")
+library("seqinr")
+
+alpha <- read.fasta("/Users/karinaruiztron/Downloads/Programas de programacion/R/Evidencia1_bio/sarscov2alpha.fasta")
+class(alpha)
+str(alpha)
+
+#Tamaño de la secuencia
+length(alpha[[1]])
+#Composición de nucleótidos
+c<-count(alpha[[1]], 1)
+est.x=(c)
+print(est.x)
+table(alpha[[1]])
+#Contenido de GC en cada virus
+alpha_fasta<-porcentaje(alpha[[1]])
+#Secuencia contrasentido
+ contra<- function(dna){
+  dna1<-length(dna)
+  inv<-dna[dna1:1]
+  return(inv)
+  }
+contra(alpha[[1]])
+
+```
+
+*Variante Beta*
+```{r}
+#install.packages("seqinr")
+library("seqinr")
+
+beta <- read.fasta("/Users/karinaruiztron/Downloads/Programas de programacion/R/Evidencia1_bio/sarscov2beta.fasta")
+class(beta)
+str(beta)
+
+#Tamaño de la secuencia
+length(beta[[1]])
+#Composición de nucleótidos
+c<-count(beta[[1]], 1)
+est.k=(c)
+print(est.k)
+table(beta[[1]])
+#Contenido de GC en cada virus
+beta_fasta<-porcentaje(beta[[1]])
+#Secuencia contrasentido
+ contra<- function(dna){
+  dna1<-length(dna)
+  inv<-dna[dna1:1]
+  return(inv)
+  }
+contra(beta[[1]])
+
+```
+
+*Variante Delta*
+```{r}
+#install.packages("seqinr")
+library("seqinr")
+
+delta <- read.fasta("/Users/karinaruiztron/Downloads/Programas de programacion/R/Evidencia1_bio/sarscov2delta.fasta")
+class(delta)
+str(delta)
+
+#Tamaño de la secuencia
+length(delta[[1]])
+#Composición de nucleótidos
+c<-count(delta[[1]], 1)
+est.i=(c)
+print(est.i)
+table(delta[[1]])
+#Contenido de GC en cada virus
+delta_fasta<-porcentaje(delta[[1]])
+#Secuencia contrasentido
+ contra<- function(dna){
+  dna1<-length(dna)
+  inv<-dna[dna1:1]
+  return(inv)
+  }
+contra(delta[[1]])
+
+```
+
+*Variante Gamma*
+```{r}
+#install.packages("seqinr")
+library("seqinr")
+
+gamma <- read.fasta("/Users/karinaruiztron/Downloads/Programas de programacion/R/Evidencia1_bio/sarscov2gamma.fasta")
+class(gamma)
+str(gamma)
+
+#Tamaño de la secuencia
+length(gamma[[1]])
+#Composición de nucleótidos
+c<-count(gamma[[1]], 1)
+est.l=(c)
+print(est.l)
+table(gamma[[1]])
+#Contenido de GC en cada virus
+gamma_fasta<-porcentaje(gamma[[1]])
+#Secuencia contrasentido
+ contra<- function(dna){
+  dna1<-length(dna)
+  inv<-dna[dna1:1]
+  return(inv)
+  }
+contra(gamma[[1]])
+
+```
+
+*Variante Omicron*
+```{r}
+#install.packages("seqinr")
+library("seqinr")
+
+omicron <- read.fasta("/Users/karinaruiztron/Downloads/Programas de programacion/R/Evidencia1_bio/sarscov2omicron.fasta")
+class(omicron)
+str(omicron)
+
+#Tamaño de la secuencia
+length(omicron[[1]])
+#Composición de nucleótidos
+c<-count(omicron[[1]], 1)
+est.v=(c)
+print(est.v)
+table(omicron[[1]])
+#Contenido de GC en cada virus
+omicron_fasta<-porcentaje(omicron[[1]])
+#Secuencia contrasentido
+ contra<- function(dna){
+  dna1<-length(dna)
+  inv<-dna[dna1:1]
+  return(inv)
+  }
+contra(omicron[[1]])
+
+```
+
+*Función Porcentaje*
+```{r}
+porcentaje <- function(dna){
+  g1 <- 0
+  c1 <- 0
+  
+  l <- length(dna)
+  
+  for (i in 1:l){
+    if (dna[i] == "g"){
+      g1 <- g1+1
+    }
+    else if (dna[i] == "c"){
+      c1 <- c1+1
+    }
+  }
+  
+  pg <- g1/l*100
+  pc <- c1/l*100
+  
+  
+  print("El porcentaje de 'G' es: ")
+  print(pg)
+  
+  print("El porcentaje de 'C' es: ")
+  print(pc)
+}
+
+n <- strsplit(dna,split = "")[[1]]
+
+
+porcentaje(n)
+
+```
+
+
+```{r}
+
+  # create a dataset
+ca<-count(alpha[[1]], 1)
+est.x=(ca)
+print(est.x)
+
+
+cb<-count(beta[[1]], 1)
+est.k=(cb)
+print(est.k)
+
+cg<-count(delta[[1]], 1)
+est.i=(cg)
+print(est.i)
+
+cd<-count(gamma[[1]], 1)
+est.l=(cd)
+print(est.l)
+
+co<-count(omicron[[1]], 1)
+est.v=(co)
+print(est.v)
+
+par(mfrow = c(2, 3))
+
+barplot(ca, beside=TRUE, legend=as.factor(unique(est.x)), col = c("#DFC0FD", "#B874FC", "#935DC9","#5D3B80"), main="Alpha")
+barplot(cb, beside=TRUE, legend=as.factor(unique(est.k)), col = c("#DFC0FD", "#B874FC", "#935DC9","#5D3B80"), main="Beta")
+barplot(cg, beside=TRUE, legend=as.factor(unique(est.i)), col = c("#DFC0FD", "#B874FC", "#935DC9","#5D3B80"), main="Delta")
+barplot(cd, beside=TRUE, legend=as.factor(unique(est.l)), col = c("#DFC0FD", "#B874FC", "#935DC9","#5D3B80"), main="Gamma")
+barplot(co, beside=TRUE, legend=as.factor(unique(est.v)), col = c("#DFC0FD", "#B874FC", "#935DC9","#5D3B80"), main="Omicron")
+
+```
+
+**Interpretación de las gráficas**
+En primera instancia se puede observar que las cinco gráficas tienen varios elementos en común como son la longitud de la hebra además de la cantidad de adenina y timina que estas poseen. Esto puede deberse al hecho de que todas son variantes del mismo virus (SARS-CoV-2). Además de esas priemras observaciones no existe otro elemento que, a mí parecer, sea indispensable de mencionar en esta interpretación.
+
+### Referencias
+
+Gobierno de México. (2022, 24 abril). COVID-19 Tablero CDMX. Geoint COVID - 19 Tablero CDMX. https://cdmx.dash.covid19.geoint.mx/
+
+Johns Hopkins Coronavirus Resource Center. (s. f.). COVID-19 Map. https://coronavirus.jhu.edu/map.html
+
+Linde, P. (2021, 2 diciembre). De la alfa a la ómicron: cómo las variantes del coronavirus se impusieron o se quedaron por el camino. El País. https://elpais.com/sociedad/2021-12-02/de-la-alfa-a-la-omicron-como-las-variantes-del-coronavirus-se-impusieron-o-se-quedaron-por-el-camino.html
+
+Statista. (2022, 21 abril). COVID-19: casos confirmados a nivel mundial por continente en 2022. https://es.statista.com/estadisticas/1107712/covid19-casos-confirmados-a-nivel-mundial-por-region/
+
+Statista. (2022b, abril 22). COVID-19: países afectados según los casos confirmados de contagio en 2022. https://es.statista.com/estadisticas/1091192/paises-afectados-por-el-coronavirus-de-wuhan-segun-los-casos-confirmados/
